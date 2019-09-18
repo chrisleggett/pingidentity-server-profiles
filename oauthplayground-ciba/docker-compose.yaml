@@ -1,40 +1,25 @@
 version: "3.1"
 
 services:
-  pingaccess:
-    image: pingidentity/pingaccess:${PING_IDENTITY_DEVOPS_TAG}
-    command: wait-for pingfederate:9031 -t 420 -- entrypoint.sh start-server
-    environment: 
-      - SERVER_PROFILE_URL=https://github.com/chrisleggett/pingidentity-server-profiles.git
-      - SERVER_PROFILE_PATH=baseline/pingaccess
-    env_file:
-      # Configuration file created when setup.sh (Getting-started project root directory) is first run to source
-      # devops user/key details for evaluation licenses and for docker image/git tags
-      - ~/.pingidentity/devops
-    # Example: Examples below for mounting local directories for inbound server profile and persisting
-    #          server build.  The local /opt/out directory must be empty when building new server
-    #             /opt/out - Resulting server build
-    #             /opt/in  - Inbound server-profile detail in liue of SERVER_PROFILE_URL (must be commented out)
-    #volumes:
-    #   - ${HOME}/projects/devops/volumes/full-stack.pingaccess:/opt/out
-    #   - ${HOME}/projects/devops/pingidentity-server-profiles/baseline/pingaccess:/opt/in
-    ports:
-      - 443:443
-      - 9000:9000
-    networks:
-      - pingnet-dmz
-
   pingfederate:
     image: pingidentity/pingfederate:${PING_IDENTITY_DEVOPS_TAG}
     command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
-#    environment:
-#      - SERVER_PROFILE_URL=https://github.com/chrisleggett/pingidentity-server-profiles.git
-#      - SERVER_PROFILE_PATH=baseline/pingfederate
+    environment:
+      - SERVER_PROFILE_URL=https://github.com/chrisleggett/pingidentity-server-profiles.git
+      - SERVER_PROFILE_PATH=oauthplayground-ciba/pingfederate
+      - SERVER_PROFILE_PARENT=BASELINE
+      - SERVER_PROFILE_BASELINE_URL=https://github.com/chrisleggett/pingidentity-server-profiles.git
+      - SERVER_PROFILE_BASELINE_PATH=baseline/pingfederate 
+      - OOBAUTH_FROM_EMAIL_ADDRESS=do_not_reply@pingidentity.com
+      - OOBAUTH_EMAIL_SMTP_HOST=smtp.mailtrap.io
+      - OOBAUTH_EMAIL_SMTP_PORT=587
+      - OOBAUTH_EMAIL_SMTP_USERNAME=22ce265a87b72f
+      - OOBAUTH_EMAIL_SMTP_PASSWORD=c0f16beca6248e
     env_file:
-      - ~/.pingidentity/devops
-    volumes:
+      - ~/.pingidentity/devops         
+   #volumes:
     #  - ${HOME}/projects/devops/volumes/full-stack.pingfederate:/opt/out
-      - ${HOME}/Documents/DevOps/master/pingidentity-server-profiles/baseline/pingfederate:/opt/in
+    #  - ${HOME}/projects/devops/volumes/pingidentity-server-profiles/baseline/pingfederate:/opt/in
     ports:
       - 9031:9031
       - 9999:9999
@@ -47,15 +32,14 @@ services:
     environment:
       - SERVER_PROFILE_URL=https://github.com/chrisleggett/pingidentity-server-profiles.git
       - SERVER_PROFILE_PATH=baseline/pingdirectory
-      - TOPOLOGY_PREFIX=03-full-stack_pingdirectory_
     env_file:
       - ~/.pingidentity/devops
     #volumes:
     #  - ${HOME}/projects/devops/volumes/full-stack.pingdirectory:/opt/out
     #  - ${HOME}/projects/devops/pingidentity-server-profiles/baseline/pingdirectory:/opt/in
     ports:
-      - 1636-1646:636
-      - 1443-1453:443
+      - 1636:636
+      - 1443:443
     networks:
       - pingnet-internal
   
