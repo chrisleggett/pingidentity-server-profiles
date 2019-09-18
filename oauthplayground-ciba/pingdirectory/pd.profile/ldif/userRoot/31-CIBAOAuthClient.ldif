@@ -1,4 +1,4 @@
-dn: pf-oauth-client-id=ciba_client,ou=oauthClients,dc=example,dc=com
+dn: pf-oauth-client-id=ciba_client,ou=oauthClients,${USER_BASE_DN}
 objectClass: pf-oauth-client
 pf-oauth-client-id: ciba_client
 pf-oauth-client-authn-type: NONE
