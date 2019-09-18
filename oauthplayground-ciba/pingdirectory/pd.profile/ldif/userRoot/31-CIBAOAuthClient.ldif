@@ -1,4 +1,8 @@
+<<<<<<< refs/remotes/pingidentity/master
 dn: pf-oauth-client-id=ciba_client,ou=oauthClients,${USER_BASE_DN}
+=======
+dn: pf-oauth-client-id=ciba_client,ou=oauthClients,dc=example,dc=com
+>>>>>>> Adding CIBA Client ldif
 objectClass: pf-oauth-client
 pf-oauth-client-id: ciba_client
 pf-oauth-client-authn-type: NONE
