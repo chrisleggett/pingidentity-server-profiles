@@ -5,6 +5,7 @@ services:
     image: pingidentity/pingfederate:${PING_IDENTITY_DEVOPS_TAG}
     command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
     environment:
+<<<<<<< refs/remotes/pingidentity/master
       - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
       - SERVER_PROFILE_PATH=oauthplayground-ciba/pingfederate
       - SERVER_PROFILE_PARENT=BASELINE
@@ -15,6 +16,18 @@ services:
       - OOBAUTH_EMAIL_SMTP_PORT=<SMTP Server Port>
       - OOBAUTH_EMAIL_SMTP_USERNAME=<SMTP Server username>
       - OOBAUTH_EMAIL_SMTP_PASSWORD=<SMTP Server password>
+=======
+      - SERVER_PROFILE_URL=https://github.com/chrisleggett/pingidentity-server-profiles.git
+      - SERVER_PROFILE_PATH=oauthplayground-ciba/pingfederate
+      - SERVER_PROFILE_PARENT=BASELINE
+      - SERVER_PROFILE_BASELINE_URL=https://github.com/chrisleggett/pingidentity-server-profiles.git
+      - SERVER_PROFILE_BASELINE_PATH=baseline/pingfederate 
+      - OOBAUTH_FROM_EMAIL_ADDRESS=do_not_reply@pingidentity.com
+      - OOBAUTH_EMAIL_SMTP_HOST=smtp.mailtrap.io
+      - OOBAUTH_EMAIL_SMTP_PORT=587
+      - OOBAUTH_EMAIL_SMTP_USERNAME=22ce265a87b72f
+      - OOBAUTH_EMAIL_SMTP_PASSWORD=c0f16beca6248e
+>>>>>>> Added OOTB Auth and CIBA Policy support
     env_file:
       - ~/.pingidentity/devops         
    #volumes:
@@ -30,11 +43,16 @@ services:
   pingdirectory:
     image: pingidentity/pingdirectory:${PING_IDENTITY_DEVOPS_TAG}
     environment:
+<<<<<<< refs/remotes/pingidentity/master
       - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
       - SERVER_PROFILE_PATH=oauthplayground-ciba/pingdirectory
       - SERVER_PROFILE_PARENT=BASELINE
       - SERVER_PROFILE_BASELINE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
       - SERVER_PROFILE_BASELINE_PATH=baseline/pingdirectory
+=======
+      - SERVER_PROFILE_URL=https://github.com/chrisleggett/pingidentity-server-profiles.git
+      - SERVER_PROFILE_PATH=baseline/pingdirectory
+>>>>>>> Added OOTB Auth and CIBA Policy support
     env_file:
       - ~/.pingidentity/devops
     #volumes:
