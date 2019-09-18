@@ -1,5 +1,2 @@
 .DS_Store
 .idea
-baseline/pingdirectory/pd.profile/ldif/userRoot/30-OAuthClients.ldif
-
-oauthplayground-ciba/pingdirectory/pd.profile/ldif/userRoot/31-CIBAOAuthClient.ldif
