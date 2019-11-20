@@ -5,6 +5,7 @@ services:
     image: pingidentity/pingfederate:${PING_IDENTITY_DEVOPS_TAG}
     command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
     environment:
+<<<<<<< HEAD
 <<<<<<< refs/remotes/pingidentity/master
 <<<<<<< refs/remotes/pingidentity/master
       - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
@@ -20,6 +21,8 @@ services:
 =======
 =======
 >>>>>>> Added OOB Auth and CIBA Policy Support
+=======
+>>>>>>> master
       - SERVER_PROFILE_URL=https://github.com/chrisleggett/pingidentity-server-profiles.git
       - SERVER_PROFILE_PATH=oauthplayground-ciba/pingfederate
       - SERVER_PROFILE_PARENT=BASELINE
@@ -30,10 +33,13 @@ services:
       - OOBAUTH_EMAIL_SMTP_PORT=587
       - OOBAUTH_EMAIL_SMTP_USERNAME=22ce265a87b72f
       - OOBAUTH_EMAIL_SMTP_PASSWORD=c0f16beca6248e
+<<<<<<< HEAD
 <<<<<<< refs/remotes/pingidentity/master
 >>>>>>> Added OOTB Auth and CIBA Policy support
 =======
 >>>>>>> Added OOB Auth and CIBA Policy Support
+=======
+>>>>>>> master
     env_file:
       - ~/.pingidentity/devops         
    #volumes:
@@ -49,6 +55,7 @@ services:
   pingdirectory:
     image: pingidentity/pingdirectory:${PING_IDENTITY_DEVOPS_TAG}
     environment:
+<<<<<<< HEAD
 <<<<<<< refs/remotes/pingidentity/master
       - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
       - SERVER_PROFILE_PATH=oauthplayground-ciba/pingdirectory
@@ -64,11 +71,17 @@ services:
 =======
 >>>>>>> Added OOB Auth and CIBA Policy Support
 =======
+=======
+      - SERVER_PROFILE_URL=https://github.com/chrisleggett/pingidentity-server-profiles.git
+>>>>>>> master
       - SERVER_PROFILE_PATH=oauthplayground-ciba/pingdirectory
       - SERVER_PROFILE_PARENT=BASELINE
       - SERVER_PROFILE_BASELINE_URL=https://github.com/chrisleggett/pingidentity-server-profiles.git
       - SERVER_PROFILE_BASELINE_PATH=baseline/pingdirectory
+<<<<<<< HEAD
 >>>>>>> Updated env variable
+=======
+>>>>>>> master
     env_file:
       - ~/.pingidentity/devops
     #volumes:

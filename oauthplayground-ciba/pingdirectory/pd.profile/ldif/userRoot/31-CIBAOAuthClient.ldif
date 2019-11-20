@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< refs/remotes/pingidentity/master
 <<<<<<< refs/remotes/pingidentity/master
 dn: pf-oauth-client-id=ciba_client,ou=oauthClients,${USER_BASE_DN}
@@ -7,6 +8,9 @@ dn: pf-oauth-client-id=ciba_client,ou=oauthClients,dc=example,dc=com
 =======
 dn: pf-oauth-client-id=ciba_client,ou=oauthClients,${USER_BASE_DN}
 >>>>>>> Updated env variable
+=======
+dn: pf-oauth-client-id=ciba_client,ou=oauthClients,${USER_BASE_DN}
+>>>>>>> master
 objectClass: pf-oauth-client
 pf-oauth-client-id: ciba_client
 pf-oauth-client-authn-type: NONE
